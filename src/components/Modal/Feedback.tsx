@@ -2,36 +2,34 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setFeedModal } from "../../store/storeSlice/storeSlice";
 
-// import { usePostFeedbackMutation } from "../../store/RTKQuery";
-// import { toast } from "react-toastify";
+import { usePostFeedbackMutation } from "../../store/RTKQuery";
+import { toast } from "react-toastify";
 import { PulseLoader } from "react-spinners";
 import { Rate } from "antd";
 
 const Feedback: React.FC = () => {
-  const [question_4, setQuestion4] = useState("");
+  const [message, setMessage] = useState("");
   const [loading] = useState(false);
 
   const dispatch = useAppDispatch();
   const { feedModal } = useAppSelector((state) => state.storeSlice);
   const [rateValue, setRateValue] = useState(0);
 
-  // const [postFeedback] = usePostFeedbackMutation();
+   const [postFeedback] = usePostFeedbackMutation();
 
   function handlePostFeedback(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // setLoading(true);
-    // setTimeout(() => {
-    //   postFeedback({
-    //     question1: question_1,
-    //     question2: question_2,
-    //     question3: question_3,
-    //     question4: question_4,
-    //   });
+     setLoading(true);
+     setTimeout(() => {
+     postFeedback({
+          rate: rate,
+          message: message,
+       });
 
-    //   toast("Отзыв успешно отправлен!", { type: "success" });
-    //   setLoading(false);
-    //   dispatch(setFeedModal(false));
-    // }, 1000);
+       toast("Отзыв успешно отправлен!", { type: "success" });
+       setLoading(false);
+       dispatch(setFeedModal(false));
+     }, 1000);
   }
 
   const desc = ["Ужасно", "Плохо", "Нормально", "Хорошо", "Замечательна"];
@@ -71,8 +69,8 @@ const Feedback: React.FC = () => {
                 <textarea
                   cols={30}
                   rows={10}
-                  value={question_4}
-                  onChange={(e) => setQuestion4(e.target.value)}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   required
                 ></textarea>
               </div>
