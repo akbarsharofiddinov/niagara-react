@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setFeedModal } from "../../store/storeSlice/storeSlice";
 
-import { usePostFeedbackMutation } from "../../store/RTKQuery";
-import { toast } from "react-toastify";
+// import { usePostFeedbackMutation } from "../../store/RTKQuery";
+// import { toast } from "react-toastify";
 import { PulseLoader } from "react-spinners";
 import { Rate } from "antd";
 
@@ -15,7 +15,9 @@ const Feedback: React.FC = () => {
   const { feedModal } = useAppSelector((state) => state.storeSlice);
   const [rateValue, setRateValue] = useState(0);
 
-  const [postFeedback] = usePostFeedbackMutation();
+  setLoading(false)
+
+  // const [postFeedback] = usePostFeedbackMutation();
 
   function handlePostFeedback(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
