@@ -55,10 +55,8 @@ interface IQuestion {
 }
 
 interface Feedback {
-  question1: IQuestion;
-  question2: IQuestion;
-  question3: IQuestion;
-  question4: string;
+  rate: number;
+  message: string;
 }
 
 // {

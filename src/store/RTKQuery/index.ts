@@ -33,8 +33,8 @@ export const storeAPI = createApi({
 
     postFeedback: builder.mutation<any, Feedback>({
       query: ({ rate, message }) => ({
-        url: `/feedback/?rate=${rate}&message=${message}`,
-        method: "POST"
+        url: `/feedback/?rating=${rate}&message=${message}`,
+        method: "POST",
       }),
     }),
   }),

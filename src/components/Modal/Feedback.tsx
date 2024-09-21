@@ -2,34 +2,48 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setFeedModal } from "../../store/storeSlice/storeSlice";
 
-import { usePostFeedbackMutation } from "../../store/RTKQuery";
+// import { usePostFeedbackMutation } from "../../store/RTKQuery";
 import { toast } from "react-toastify";
 import { PulseLoader } from "react-spinners";
 import { Rate } from "antd";
+import axios from "axios";
 
 const Feedback: React.FC = () => {
   const [message, setMessage] = useState("");
-  const [loading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useAppDispatch();
   const { feedModal } = useAppSelector((state) => state.storeSlice);
   const [rateValue, setRateValue] = useState(0);
 
-   const [postFeedback] = usePostFeedbackMutation();
+  // const [postFeedback, result] = usePostFeedbackMutation();
 
-  function handlePostFeedback(e: React.FormEvent<HTMLFormElement>) {
+  async function handlePostFeedback(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-     setLoading(true);
-     setTimeout(() => {
-     postFeedback({
-          rate: rate,
-          message: message,
-       });
+    setLoading(true);
 
-       toast("Отзыв успешно отправлен!", { type: "success" });
-       setLoading(false);
-       dispatch(setFeedModal(false));
-     }, 1000);
+    // postFeedback({
+    //   rate: rateValue,
+    //   message: message,
+    // });
+
+    // console.log(result);
+
+    try {
+      const response = await axios.post(
+        `https://qrmenu.niagara-restaurant.uz/api/feedback/?rating=${rateValue}&message=${message}`
+      );
+
+      if (response.status === 200) {
+        toast("Отзыв успешно отправлен!", { type: "success" });
+        setLoading(false);
+        dispatch(setFeedModal(false));
+      } else {
+        toast("Ошибка отправки отзыва!", { type: "error" });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const desc = ["Ужасно", "Плохо", "Нормально", "Хорошо", "Замечательна"];
