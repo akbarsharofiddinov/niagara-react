@@ -9,13 +9,11 @@ import { Rate } from "antd";
 
 const Feedback: React.FC = () => {
   const [question_4, setQuestion4] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
 
   const dispatch = useAppDispatch();
   const { feedModal } = useAppSelector((state) => state.storeSlice);
   const [rateValue, setRateValue] = useState(0);
-
-  setLoading(false)
 
   // const [postFeedback] = usePostFeedbackMutation();
 
