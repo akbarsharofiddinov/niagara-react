@@ -15,13 +15,13 @@ const SectionHeader: React.FC = () => {
             <div className="infos-top">
               <span>
                 <FiPhone color="#ffb300" fontSize={22} />
-                <a href="tel:+998990950007">+998 99 095 00 07</a>
+                <a href="tel:+998990950007">+998 94 903 55 55</a>
               </span>
             </div>
             <div className="infos-btm">
               <span>
                 <GrLocation color="#ffb300" fontSize={22} />
-                Адрес 27-мкр <br /> на против мечет
+                Т.Ещанова 50/1 <br />  24 мкр
               </span>
             </div>
           </div>

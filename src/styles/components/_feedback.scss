@@ -37,47 +37,63 @@
       padding: 7px 14px;
     }
 
-    .inputBox {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px;
-      border-radius: 7px;
-      border: 1px solid #aaa;
-      cursor: pointer;
+    .rating-box {
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        
 
-      position: relative;
-
-      .select-dropdown {
-        position: absolute;
-        background-color: #333;
-        box-shadow: 0 12px 15px #0000004d;
-        width: 102%;
-        left: 0;
-        transform: translateX(-1%);
-        border-radius: 8px;
-        top: 110%;
-        z-index: 5;
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-
-        &.active {
-          display: flex;
-        }
-
-        button {
-          background-color: transparent;
-          border: none;
-          color: #fff;
-          padding: 10px 20px;
-          border-radius: 8px;
-
-          &:hover {
-            background-color: #444;
+        .ant-rate-star-zero {
+          svg {
+            fill: #7a7a7a !important;
           }
         }
       }
     }
+
+    // .inputBox {
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: space-between;
+    //   padding: 12px;
+    //   border-radius: 7px;
+    //   border: 1px solid #aaa;
+    //   cursor: pointer;
+
+    //   position: relative;
+
+    //   .select-dropdown {
+    //     position: absolute;
+    //     background-color: #333;
+    //     box-shadow: 0 12px 15px #0000004d;
+    //     width: 102%;
+    //     left: 0;
+    //     transform: translateX(-1%);
+    //     border-radius: 8px;
+    //     top: 110%;
+    //     z-index: 5;
+    //     display: none;
+    //     flex-direction: column;
+    //     gap: 10px;
+
+    //     &.active {
+    //       display: flex;
+    //     }
+
+    //     button {
+    //       background-color: transparent;
+    //       border: none;
+    //       color: #fff;
+    //       padding: 10px 20px;
+    //       border-radius: 8px;
+
+    //       &:hover {
+    //         background-color: #444;
+    //       }
+    //     }
+    //   }
+    // }
   }
 }

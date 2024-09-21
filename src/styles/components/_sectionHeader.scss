@@ -9,6 +9,10 @@
   flex-direction: column;
   margin-top: 21px;
   gap: 15px;
+  
+  & > div {
+    padding: 0 10px;
+  }
 
   a {
     color: white;
